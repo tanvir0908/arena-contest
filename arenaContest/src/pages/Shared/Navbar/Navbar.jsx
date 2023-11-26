@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { HiMenu } from "react-icons/hi";
@@ -6,12 +6,23 @@ import logo from "../../../assets/logo.png";
 import Button from "../../../components/Button/Button";
 import Container from "../../../components/Container/Container";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [profile, setProfile] = useState(false);
-
+  const [userInformation, setUserInformation] = useState(null);
   const { user, logoutUser } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    axiosPublic(`/users/${user?.email}`).then((res) => {
+      setUserInformation(res.data);
+    });
+  }, [axiosPublic, user]);
+
+  console.log(userInformation);
+
   console.log(user);
   const handleLogout = () => {
     setProfile(false);
@@ -79,7 +90,8 @@ export default function Navbar() {
                   setIsOpen(false);
                 }}
                 className="w-10 md:w-12 h-10 md:h-12 cursor-pointer border-2 border-primary rounded-full object-cover"
-                src={user?.photoURL}
+                src={userInformation?.photo}
+                // src={user?.photoURL}
                 alt=""
               />
               {profile && (
