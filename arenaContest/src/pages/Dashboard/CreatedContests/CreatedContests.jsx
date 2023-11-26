@@ -20,7 +20,6 @@ export default function CreatedContests() {
   const handleDelete = async (id) => {
     const res = await axiosPublic.delete(`/contest/${id}`);
     refetch();
-    console.log(res.data);
     if (res.data.deletedCount > 0) {
       toast.success("Contest deleted successfully");
     }

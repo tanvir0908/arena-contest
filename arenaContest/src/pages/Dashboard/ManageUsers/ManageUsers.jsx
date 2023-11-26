@@ -32,7 +32,7 @@ export default function ManageUsers() {
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
-        All Users:
+        All Users: {users.length}
       </h2>
       <hr className="border w-10/12 border-primary mx-auto mb-8" />
       <table className="w-full">
