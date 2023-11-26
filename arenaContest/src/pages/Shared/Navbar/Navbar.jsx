@@ -10,13 +10,13 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [profile, setProfile] = useState(false);
 
-  //   const user = null;
-  const user = {
-    name: "Tanvir Hasan Emon",
-    email: "tanvir@gmail.com",
-    photo:
-      "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
-  };
+  const user = null;
+  // const user = {
+  //   name: "Tanvir Hasan Emon",
+  //   email: "tanvir@gmail.com",
+  //   photo:
+  //     "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg",
+  // };
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
@@ -83,26 +83,15 @@ export default function Navbar() {
               {profile && (
                 <div className="absolute mt-1 md:mt-3 top-12 right-10 md:right-14 lg:right-0  w-[15rem] shadow-md rounded-xl  z-10 bg-secondary">
                   <div className="flex flex-col">
-                    <NavLink
-                      to={"/myAddedFoods"}
-                      onClick={() => setProfile(false)}
-                      className={"rounded-t-xl px-6 py-4 font-medium"}
-                    >
-                      My added food items
-                    </NavLink>
+                    <p className="rounded-t-xl text-center px-6 py-4 font-medium">
+                      {user?.name}
+                    </p>
                     <NavLink
                       onClick={() => setProfile(false)}
                       to={"/addNewFood"}
-                      className={"px-6 py-4 font-medium"}
+                      className={"px-6 text-center py-4 font-medium"}
                     >
-                      Add a new food
-                    </NavLink>
-                    <NavLink
-                      onClick={() => setProfile(false)}
-                      to={"/myOrderedFoods"}
-                      className={"px-6 py-4 font-medium"}
-                    >
-                      My ordered food items
+                      Dashboard
                     </NavLink>
                     <button className="bg-primary text-white font-semibold px-6 py-4 rounded-b-xl">
                       Logout
@@ -112,7 +101,9 @@ export default function Navbar() {
               )}
             </>
           ) : (
-            <Button buttonText={"Login"} />
+            <Link to={"/login"}>
+              <Button buttonText={"Login"} />
+            </Link>
           )}
           <div className="lg:hidden" onClick={handleOpen}>
             {isOpen ? (
