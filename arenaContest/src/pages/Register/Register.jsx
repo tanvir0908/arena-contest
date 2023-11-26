@@ -27,6 +27,7 @@ export default function Register() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -47,13 +48,14 @@ export default function Register() {
           photo: data?.photo,
           email: data?.email,
           password: data?.password,
-          role: "admin",
+          //   role: "moderator",
         };
 
         // store users information into database
         axiosPublic.post("/users", newUser).then((res) => {
           if (res.data.insertedId) {
             toast.success("User created successfully");
+            reset();
           }
         });
 

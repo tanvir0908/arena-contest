@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { HiMenu } from "react-icons/hi";
-import logo from "../../../assets/logo.png";
 import Button from "../../../components/Button/Button";
 import Container from "../../../components/Container/Container";
 import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Logo from "../../../components/Logo/Logo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,12 +40,7 @@ export default function Navbar() {
     <Container>
       <div className="my-5 items-center flex justify-between">
         {/* website logo */}
-        <div>
-          <Link to={"/"} className="flex items-center gap-2">
-            <img className="w-10 md:w-12" src={logo} alt="" />
-            <p className="text-2xl md:text-3xl font-bold">ArenaContext</p>
-          </Link>
-        </div>
+        <Logo />
         {/* nav links */}
         <div className="hidden lg:block font-semibold">
           <NavLink
@@ -59,24 +54,14 @@ export default function Navbar() {
             Home
           </NavLink>
           <NavLink
-            to={"/allFoodItems"}
+            to={"/allContests"}
             className={({ isActive }) =>
               isActive
-                ? "border-b-2 border-primary"
+                ? "mx-5 xl:mx-16 border-b-2 border-primary"
                 : "mx-5 xl:mx-16 hover:text-primary transition"
             }
           >
-            All Food Items
-          </NavLink>
-          <NavLink
-            to={"/blog"}
-            className={({ isActive }) =>
-              isActive
-                ? "border-b-2 border-primary"
-                : "hover:text-primary transition"
-            }
-          >
-            Blog
+            All Contests
           </NavLink>
         </div>
         {/* navbar end side */}
@@ -98,15 +83,16 @@ export default function Navbar() {
                 <div className="absolute mt-1 md:mt-3 top-12 right-10 md:right-14 lg:right-0  w-[15rem] shadow-md rounded-xl  z-10 bg-secondary">
                   <div className="flex flex-col">
                     <p className="rounded-t-xl text-center px-6 py-4 font-medium">
-                      {user?.displayName}
+                      {userInformation?.name}
+                      {/* {user?.displayName} */}
                     </p>
-                    <NavLink
+                    <Link
                       onClick={() => setProfile(false)}
-                      to={"/addNewFood"}
+                      to={"/dashboard"}
                       className={"px-6 text-center py-4 font-medium"}
                     >
                       Dashboard
-                    </NavLink>
+                    </Link>
                     <button
                       onClick={handleLogout}
                       className="bg-primary text-white font-semibold px-6 py-4 rounded-b-xl"
@@ -140,11 +126,8 @@ export default function Navbar() {
               >
                 Home
               </NavLink>
-              <NavLink to={"/allFoodItems"} className={"px-6 py-4 font-medium"}>
-                All Food Items
-              </NavLink>
-              <NavLink to={"/blog"} className={"px-6 py-4 font-medium"}>
-                Blog
+              <NavLink to={"/allContests"} className={"px-6 py-4 font-medium"}>
+                All Contests
               </NavLink>
             </div>
           </div>
