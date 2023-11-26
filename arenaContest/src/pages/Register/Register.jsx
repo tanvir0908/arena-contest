@@ -48,7 +48,7 @@ export default function Register() {
           photo: data?.photo,
           email: data?.email,
           password: data?.password,
-          //   role: "moderator",
+          role: "user",
         };
 
         // store users information into database
