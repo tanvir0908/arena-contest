@@ -5,7 +5,7 @@ import Login from "../pages/Login/Login";
 import Dashboard from "../layout/Dashboard";
 import ManageUsers from "../pages/Dashboard/ManageUsers/ManageUsers";
 import ManageContest from "../pages/Dashboard/ManageContest/ManageContest";
-import AllContests from "../pages/Register/AllContests";
+import AllContests from "../pages/AllContests.jsx/AllContests";
 import AddContest from "../pages/Dashboard/AddContest/AddContest";
 import CreatedContests from "../pages/Dashboard/CreatedContests/CreatedContests";
 import AdminRoute from "./AdminRoute";
