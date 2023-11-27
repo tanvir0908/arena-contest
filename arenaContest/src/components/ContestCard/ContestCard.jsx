@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ContestCard({ contest }) {
+  const navigate = useNavigate();
   const {
     _id,
     contestName,
@@ -32,11 +33,15 @@ export default function ContestCard({ contest }) {
             {contestDescription.slice(0, 200)}
           </span>
         </p>
-        <Link to={`/allContest/${_id}`}>
-          <button className="border-2 border-primary text-lg font-semibold px-3 py-1 rounded-xl mt-5 text-primary">
-            Contest Details
-          </button>
-        </Link>
+
+        <button
+          onClick={() => {
+            navigate(`/contestDetails/${_id}`, { state: _id });
+          }}
+          className="border-2 border-primary text-lg font-semibold px-3 py-1 rounded-xl mt-5 text-primary"
+        >
+          Contest Details
+        </button>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@ import AllContests from "../pages/AllContests.jsx/AllContests";
 import AddContest from "../pages/Dashboard/AddContest/AddContest";
 import CreatedContests from "../pages/Dashboard/CreatedContests/CreatedContests";
 import AdminRoute from "./AdminRoute";
+import ContestDetails from "../components/ContestDetails/ContestDetails";
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +21,17 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/allContests",
+        path: "allContests",
         element: <AllContests />,
+      },
+      {
+        path: "contestDetails/:id",
+        element: <ContestDetails />,
+        
       },
     ],
   },

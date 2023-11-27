@@ -33,21 +33,6 @@ export default function AllContests() {
         All Contests: {contests.length}
       </h2>
       <hr className="border w-10/12 border-primary mx-auto mb-5" />
-      {/* <div className="mx-auto text-center">
-        <button className="bg-primary text-white font-medium px-3 py-2 rounded-xl">
-          Business Contest
-        </button>
-        <button className="mx-10 bg-primary text-white font-medium px-3 py-2 rounded-xl">
-          Medical Contest
-        </button>
-        <button className="bg-primary text-white font-medium px-3 py-2 rounded-xl">
-          Article Writing
-        </button>
-        <button className="ml-10 bg-primary text-white font-medium px-3 py-2 rounded-xl">
-          Gaming
-        </button>
-      </div>
-      <hr className="border w-10/12 border-primary mx-auto my-5" /> */}
       <Tabs
         className={"text-center w-10/12 mx-auto"}
         defaultIndex={tabIndex}
