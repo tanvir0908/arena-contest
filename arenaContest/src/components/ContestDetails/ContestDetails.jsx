@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
@@ -58,7 +58,7 @@ export default function ContestDetails() {
             </span>
           </p>
           <button className="bg-primary px-5 py-3 text-white font-bold rounded-xl">
-            Register
+            <Link to={"/payment"}>Register</Link>
           </button>
         </div>
       </div>

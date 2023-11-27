@@ -16,21 +16,24 @@ export default function AllContests() {
       return res.data;
     },
   });
-  const business = contests.filter(
-    (contest) => contest.contestType === "business"
+
+  const business = contests?.filter(
+    (contest) => contest?.contestType === "business"
   );
-  const medical = contests.filter(
-    (contest) => contest.contestType === "medical"
+  const medical = contests?.filter(
+    (contest) => contest?.contestType === "medical"
   );
-  const article = contests.filter(
-    (contest) => contest.contestType === "article"
+  const article = contests?.filter(
+    (contest) => contest?.contestType === "article"
   );
-  const gaming = contests.filter((contest) => contest.contestType === "gaming");
+  const gaming = contests?.filter(
+    (contest) => contest?.contestType === "gaming"
+  );
 
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
-        All Contests: {contests.length}
+        All Contests: {contests?.length}
       </h2>
       <hr className="border w-10/12 border-primary mx-auto mb-5" />
       <Tabs
@@ -46,28 +49,28 @@ export default function AllContests() {
         </TabList>
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-5 gap-10">
-            {business.map((contest) => (
+            {business?.map((contest) => (
               <ContestCard key={contest._id} contest={contest} />
             ))}
           </div>
         </TabPanel>
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-10">
-            {medical.map((contest) => (
+            {medical?.map((contest) => (
               <ContestCard key={contest._id} contest={contest} />
             ))}
           </div>
         </TabPanel>
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-10">
-            {article.map((contest) => (
+            {article?.map((contest) => (
               <ContestCard key={contest._id} contest={contest} />
             ))}
           </div>
         </TabPanel>
         <TabPanel>
           <div className="grid grid-cols-1 md:grid-cols-2 mt-5 lg:grid-cols-3 gap-10">
-            {gaming.map((contest) => (
+            {gaming?.map((contest) => (
               <ContestCard key={contest._id} contest={contest} />
             ))}
           </div>

@@ -10,12 +10,18 @@ import AddContest from "../pages/Dashboard/AddContest/AddContest";
 import CreatedContests from "../pages/Dashboard/CreatedContests/CreatedContests";
 import AdminRoute from "./AdminRoute";
 import ContestDetails from "../components/ContestDetails/ContestDetails";
+import Payment from "../pages/Payment/Payment";
+import Home from "../pages/Home/Home/Home";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "register",
         element: <Register />,
@@ -31,7 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "contestDetails/:id",
         element: <ContestDetails />,
-        
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
     ],
   },
