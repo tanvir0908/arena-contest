@@ -49,6 +49,7 @@ export default function Register() {
           email: data?.email,
           password: data?.password,
           role: "user",
+          count: 0,
         };
 
         // store users information into database

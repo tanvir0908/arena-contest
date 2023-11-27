@@ -59,6 +59,7 @@ export default function Login() {
           photo: result.user.photoURL,
           email: result.user.email,
           role: "user",
+          count: 0,
         };
         // store users information into database
         axiosPublic.post("/users", newUser).then((res) => {

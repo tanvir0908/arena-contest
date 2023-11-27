@@ -10,9 +10,9 @@ export default function CreatedContests() {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const { data: createdContests = [], refetch } = useQuery({
-    queryKey: ["contests", user?.email],
+    queryKey: ["contestByEmail", user?.email],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/contest?email=${user?.email}`);
+      const res = await axiosPublic.get(`/contestByEmail?email=${user?.email}`);
       return res.data;
     },
   });
