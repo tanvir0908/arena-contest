@@ -26,14 +26,6 @@ export default function BestCreator() {
     newData.push(creator);
   }
 
-  //   const creator1 = contestData?.find(
-  //     (contest) => contest.creatorEmail == moderatorsEmail[0]
-  //   );
-
-  //   newData.push(creator1);
-  console.log(newData[0]);
-
-  // slider settings
   var settings = {
     dots: false,
     infinite: true,
@@ -82,17 +74,17 @@ export default function BestCreator() {
             >
               <div className="rounded-t-xl h-56 bg-secondary flex justify-center items-center">
                 <img
-                  src={partner.photo}
+                  src={partner?.photo}
                   className="h-44 w-44 rounded-full object-cover"
                   alt=""
                 />
               </div>
               <div className="rounded-b-xl p-4 space-y-2">
                 <h2 className="text-2xl font-bold text-primary">
-                  Creator Name: {partner.name}
+                  Creator Name: {partner?.name}
                 </h2>
                 <h2 className="text-2xl font-bold ">
-                  Contest Name: {newData[index].contestName}
+                  Contest Name: {newData[index]?.contestName}
                 </h2>
                 <p className="font-medium">
                   <span className="font-semibold">Description: </span>

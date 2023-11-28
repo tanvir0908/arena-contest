@@ -4,7 +4,6 @@ import {
   AiFillInstagram,
   AiOutlineGoogle,
 } from "react-icons/ai";
-import { Link } from "react-router-dom";
 import Logo from "../../../components/Logo/Logo";
 
 export default function Footer() {
