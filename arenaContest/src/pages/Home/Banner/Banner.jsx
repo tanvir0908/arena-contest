@@ -1,7 +1,5 @@
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-// import { useQuery } from "@tanstack/react-query";
-// import { useEffect, useState } from "react";
 import "./Banner.css";
 import { useState } from "react";
 import ContestCard from "../../../components/ContestCard/ContestCard.jsx";
@@ -18,28 +16,24 @@ export default function Banner() {
   const [searchResult, setSearchResult] = useState([]);
 
   const onSubmit = async (data) => {
+    if (data.searchText === "Business Contest") {
+      data.searchText = "business";
+    }
+    if (data.searchText === "Medical Contest") {
+      data.searchText = "medical";
+    }
+    if (data.searchText === "Article Writing") {
+      data.searchText = "article";
+    }
+    if (data.searchText === "Gaming") {
+      data.searchText = "gaming";
+    }
     const res = await axiosPublic.get(`/approvedContests/${data.searchText}`);
     setSearchResult(res.data);
     reset();
   };
-  console.log(searchResult);
-  //   const axiosPublic = useAxiosPublic();
-  //   const { data: contests = [], refetch } = useQuery({
-  //     queryKey: ["contest"],
-  //     queryFn: async () => {
-  //       const res = await axiosPublic.get(`/approvedContests/${type}`);
-  //       return res.data;
-  //     },
-  //   });
-
-  //   useEffect(() => {
-  //     fetch(`/approvedContests/${type}`)
-  //       .then((res) => res.json)
-  //       .then((data) => setData(data));
-  //   }, [type]);
 
   const handleClear = () => {
-    // setShow(false);
     setSearchResult([]);
   };
 
