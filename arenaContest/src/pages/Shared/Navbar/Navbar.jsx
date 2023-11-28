@@ -21,9 +21,8 @@ export default function Navbar() {
     });
   }, [axiosPublic, user]);
 
-  console.log(userInformation);
-
-  console.log(user);
+  // console.log(userInformation);
+  // console.log(user);
   const handleLogout = () => {
     setProfile(false);
     logoutUser()
