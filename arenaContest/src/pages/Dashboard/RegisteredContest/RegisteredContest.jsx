@@ -3,6 +3,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import toast from "react-hot-toast";
+
 export default function RegisteredContest() {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
