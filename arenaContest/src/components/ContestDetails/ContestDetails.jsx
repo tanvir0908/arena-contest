@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import DeadlineTimer from "../DeadlineTimer/DeadlineTimer";
 
 // import { Elements } from "@stripe/react-stripe-js";
 // import { loadStripe } from "@stripe/stripe-js";
@@ -42,12 +43,12 @@ export default function ContestDetails() {
       <div className="flex flex-col lg:flex-row items-center gap-10">
         <div className="flex-1">
           <img
-            className="w-full h-[45rem] rounded-xl object-cover"
+            className="w-full h-[30rem] rounded-xl object-cover"
             src={contest?.contestPhoto}
             alt=""
           />
         </div>
-        <div className="flex-1 space-y-3">
+        <div className="flex-1 space-y-2">
           <h2 className="text-2xl font-bold">
             Contest Name: {contest?.contestName}
           </h2>
@@ -60,6 +61,9 @@ export default function ContestDetails() {
           </p>
           <p className="font-bold text-xl">
             Contest Deadline: {contest?.contestDeadline}
+          </p>
+          <p className="font-bold text-xl">
+            <DeadlineTimer deadline={contest?.contestDeadline} />
           </p>
           <p className="font-bold text-xl">
             Participation Count: {contest?.participationCount}
@@ -78,14 +82,15 @@ export default function ContestDetails() {
               {contest.contestDescription}
             </span>
           </p>
-          <Link to={`/payment/${contest._id}`}>
-            <button
-              // onClick={() => setShowPayment(!showPayment)}
-              className="bg-primary mt-5 px-5 py-3 text-white font-bold rounded-xl"
-            >
-              Register
-            </button>
-          </Link>
+          {new Date(contest?.contestDeadline) > new Date() ? (
+            <Link to={`/payment/${contest._id}`}>
+              <button className="bg-primary mt-5 px-10 py-3 text-white font-bold rounded-xl">
+                Register
+              </button>
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>

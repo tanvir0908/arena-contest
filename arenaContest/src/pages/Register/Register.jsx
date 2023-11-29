@@ -20,7 +20,6 @@ export default function Register() {
 
   // navigate user to the login page
   const navigate = useNavigate();
-
   const axiosPublic = useAxiosPublic();
 
   // react hook form
