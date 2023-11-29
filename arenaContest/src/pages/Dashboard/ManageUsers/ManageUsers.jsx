@@ -5,7 +5,11 @@ import toast from "react-hot-toast";
 export default function ManageUsers() {
   const axiosPublic = useAxiosPublic();
 
-  const { data: users = [], refetch } = useQuery({
+  const {
+    data: users = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/users`);
@@ -29,6 +33,13 @@ export default function ManageUsers() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">

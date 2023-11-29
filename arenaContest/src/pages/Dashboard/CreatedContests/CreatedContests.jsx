@@ -9,7 +9,11 @@ import toast from "react-hot-toast";
 export default function CreatedContests() {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
-  const { data: createdContests = [], refetch } = useQuery({
+  const {
+    data: createdContests = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["contestByEmail", user?.email],
     queryFn: async () => {
       const res = await axiosPublic.get(`/contestByEmail?email=${user?.email}`);
@@ -24,6 +28,14 @@ export default function CreatedContests() {
       toast.success("Contest deleted successfully");
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">

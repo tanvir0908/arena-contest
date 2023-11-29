@@ -6,7 +6,11 @@ import toast from "react-hot-toast";
 export default function ManageContest() {
   const axiosPublic = useAxiosPublic();
 
-  const { data: contests = [], refetch } = useQuery({
+  const {
+    data: contests = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["contest"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/contest`);
@@ -23,6 +27,13 @@ export default function ManageContest() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
   const handleDelete = async (id) => {
     const res = await axiosPublic.delete(`/contest/${id}`);
     refetch();

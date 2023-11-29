@@ -7,13 +7,22 @@ export default function WinningContest() {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
 
-  const { data: winningContests = [] } = useQuery({
-    queryKey: ["registeredContests"],
+  const { data: winningContests = [], isLoading } = useQuery({
+    queryKey: ["winningContests"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/winningContest?email=${user?.email}`);
       return res.data;
     },
   });
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
@@ -29,11 +38,11 @@ export default function WinningContest() {
             <th>Contest Price</th>
             <th>Prize Money</th>
             <th>Deadline</th>
-            <th>Participants</th>
+            <th className="rounded-r-xl">Participants</th>
           </tr>
         </thead>
         <tbody>
-          {winningContests.map((contest, index) => (
+          {winningContests?.map((contest, index) => (
             <tr className="font-medium" key={contest._id}>
               <td className="mx-auto text-center">{index + 1}</td>
               <td>

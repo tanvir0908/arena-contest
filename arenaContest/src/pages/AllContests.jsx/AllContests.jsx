@@ -9,7 +9,7 @@ export default function AllContests() {
   const axiosPublic = useAxiosPublic();
   const [tabIndex, setTabIndex] = useState(0);
 
-  const { data: contests = [] } = useQuery({
+  const { data: contests = [], isLoading } = useQuery({
     queryKey: ["allContests"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/approvedContests`);
@@ -29,6 +29,14 @@ export default function AllContests() {
   const gaming = contests?.filter(
     (contest) => contest?.contestType === "gaming"
   );
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="mb-20">

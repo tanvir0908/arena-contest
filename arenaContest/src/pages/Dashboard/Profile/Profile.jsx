@@ -5,14 +5,15 @@ import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
 import { PieChart, Pie, Cell, Legend } from "recharts";
+import toast from "react-hot-toast";
 const COLORS = ["#0088FE", "#00C49F"];
 
 export default function Profile() {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
 
-  const { data: winningStat = {} } = useQuery({
-    queryKey: ["registeredContests"],
+  const { data: winningStat, isLoading } = useQuery({
+    queryKey: ["userStat"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/winningStat?email=${user?.email}`);
       return res.data;
@@ -63,10 +64,30 @@ export default function Profile() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    user.displayName = data.name;
+    user.photoURL = data.photo;
+
+    const updateUser = {
+      email: user?.email,
+      name: data.name,
+      photo: data.photo,
+    };
+    const res = await axiosPublic.patch("/updateUser", updateUser);
+    if (res.data.modifiedCount > 0) {
+      toast.success("Users information updated successfully");
+    }
     reset();
   };
+
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">

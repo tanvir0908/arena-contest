@@ -13,6 +13,14 @@ export default function PopularContest() {
     },
   });
 
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <div className="my-20">
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">

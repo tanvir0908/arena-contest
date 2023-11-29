@@ -8,7 +8,11 @@ export default function RegisteredContest() {
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
 
-  const { data: registeredContests = [], refetch } = useQuery({
+  const {
+    data: registeredContests = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["registeredContests"],
     queryFn: async () => {
       const res = await axiosPublic.get(
@@ -30,6 +34,14 @@ export default function RegisteredContest() {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center text-primary">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
@@ -45,11 +57,11 @@ export default function RegisteredContest() {
             <th>Contest Price</th>
             <th>Prize Money</th>
             <th>Deadline</th>
-            <th>Participate</th>
+            <th className="rounded-r-xl">Participate</th>
           </tr>
         </thead>
         <tbody>
-          {registeredContests.map((register, index) => (
+          {registeredContests?.map((register, index) => (
             <tr className="font-medium" key={register._id}>
               <td className="mx-auto text-center">{index + 1}</td>
               <td>
