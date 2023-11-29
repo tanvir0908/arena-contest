@@ -96,9 +96,11 @@ export default function CreatedContests() {
                 )}
               </td>
               <td className="mx-auto text-center">
-                <button className="border bg-secondary  p-2 text-lg rounded-xl">
-                  <FaFileLines />
-                </button>
+                <Link to={`/dashboard/submittedContest/${contest._id}`}>
+                  <button className="border bg-secondary  p-2 text-lg rounded-xl">
+                    <FaFileLines />
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}

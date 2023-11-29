@@ -65,7 +65,7 @@ export default function Dashboard() {
                   My Created Contests
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <NavLink
                   className={
                     "flex items-center gap-3 p-3 m-2 text-lg font-medium"
@@ -74,7 +74,7 @@ export default function Dashboard() {
                 >
                   <FaBook /> Contest Submitted Page
                 </NavLink>
-              </li>
+              </li> */}
             </>
           ) : (
             <></>

@@ -18,6 +18,7 @@ import RegisteredContest from "../pages/Dashboard/RegisteredContest/RegisteredCo
 import WinningContest from "../pages/Dashboard/WinningContest/WinningContest";
 import Profile from "../pages/Dashboard/Profile/Profile";
 import UpdateContest from "../pages/Dashboard/UpdateContest/UpdateContest";
+import ContestSubmitted from "../pages/Dashboard/ContestSubmitted/ContestSubmitted";
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +100,12 @@ export const router = createBrowserRouter([
       {
         path: "updateContest/:id",
         element: <UpdateContest />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/contest/${params.id}`),
+      },
+      {
+        path: "submittedContest/:id",
+        element: <ContestSubmitted />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/contest/${params.id}`),
       },
