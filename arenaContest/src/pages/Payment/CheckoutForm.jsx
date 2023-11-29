@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { AuthContext } from "../../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutForm({ contest }) {
   const [error, setError] = useState("");
@@ -11,6 +12,7 @@ export default function CheckoutForm({ contest }) {
   const elements = useElements();
   const axiosPublic = useAxiosPublic();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axiosPublic
@@ -18,7 +20,6 @@ export default function CheckoutForm({ contest }) {
         price: contest?.contestPrice,
       })
       .then((res) => {
-        console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
   }, [axiosPublic, contest]);
@@ -63,9 +64,30 @@ export default function CheckoutForm({ contest }) {
     if (confirmError) {
       console.log("Confirm error");
     } else {
-      console.log("payment intent", paymentIntent);
+      // console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
-        toast.success("Payment successful");
+        const registerContest = {
+          contest_Id: contest._id,
+          contestName: contest.contestName,
+          contestPhoto: contest.contestPhoto,
+          contestDeadline: contest.contestDeadline,
+          contestPrice: contest.contestPrice,
+          priceMoney: contest.priceMoney,
+          status: "none",
+          userEmail: user.email,
+          userName: user.displayName,
+          userPhoto: user.photoURL,
+        };
+        // console.log(registerContest);
+
+        const res = await axiosPublic.post(
+          "/registeredContest",
+          registerContest
+        );
+        if (res.data.insertedId) {
+          toast.success("Payment successful");
+          navigate("/allContests");
+        }
       }
     }
   };

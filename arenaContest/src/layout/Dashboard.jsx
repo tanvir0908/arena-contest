@@ -83,10 +83,10 @@ export default function Dashboard() {
             <>
               <li>
                 <NavLink
+                  to={"/dashboard/usersProfile"}
                   className={
                     "flex items-center gap-3 p-3 m-2 text-lg font-medium"
                   }
-                  to={"/dashboard/manageUsers"}
                 >
                   <FaUsers />
                   My Profile
@@ -97,7 +97,7 @@ export default function Dashboard() {
                   className={
                     "flex items-center gap-3 p-3 m-2 text-lg font-medium"
                   }
-                  to={"/dashboard/manageContest"}
+                  to={"/dashboard/registeredContest"}
                 >
                   <FaBook /> My Registered Contests
                 </NavLink>
@@ -107,7 +107,7 @@ export default function Dashboard() {
                   className={
                     "flex items-center gap-3 p-3 m-2 text-lg font-medium"
                   }
-                  to={"/dashboard/manageContest"}
+                  to={"/dashboard/winningContest"}
                 >
                   <FaBook /> My Winning Contests
                 </NavLink>

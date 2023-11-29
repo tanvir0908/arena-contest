@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 // import { Elements } from "@stripe/react-stripe-js";
@@ -8,6 +9,12 @@ import { Link, useLoaderData } from "react-router-dom";
 // import { useQuery } from "@tanstack/react-query";
 
 export default function ContestDetails() {
+  // page start from the top
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
   // const stripePromise = loadStripe(
   //   "pk_test_51OEtWTJ5bzp9GZmm5xo4yISS97TL4G5p7wVEZVzEmSuKZ0ZUHtzSfC5pHoIVNMyS4PrGw8TgtWXo55AeUufIL8YP00frqB01lh"
   // );

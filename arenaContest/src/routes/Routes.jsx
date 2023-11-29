@@ -13,6 +13,9 @@ import ContestDetails from "../components/ContestDetails/ContestDetails";
 import Home from "../pages/Home/Home/Home";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../pages/Payment/Payment";
+import RegisteredContest from "../pages/Dashboard/RegisteredContest/RegisteredContest";
+import WinningContest from "../pages/Dashboard/WinningContest/WinningContest";
+import Profile from "../pages/Dashboard/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -68,7 +71,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "manageContest",
-        element: <ManageContest />,
+        element: (
+          <AdminRoute>
+            <ManageContest />
+          </AdminRoute>
+        ),
       },
       // moderator dashboard
       {
@@ -78,6 +85,19 @@ export const router = createBrowserRouter([
       {
         path: "createdContests",
         element: <CreatedContests />,
+      },
+      // users dashboard
+      {
+        path: "usersProfile",
+        element: <Profile />,
+      },
+      {
+        path: "registeredContest",
+        element: <RegisteredContest />,
+      },
+      {
+        path: "winningContest",
+        element: <WinningContest />,
       },
     ],
   },
