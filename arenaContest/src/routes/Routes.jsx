@@ -99,13 +99,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "updateContest/:id",
-        element: <UpdateContest />,
+        element: (
+          <ModeratorRoute>
+            <UpdateContest />
+          </ModeratorRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/contest/${params.id}`),
       },
       {
         path: "submittedContest/:id",
-        element: <ContestSubmitted />,
+        element: (
+          <ModeratorRoute>
+            <ContestSubmitted />
+          </ModeratorRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/contest/${params.id}`),
       },
