@@ -9,6 +9,7 @@ import AllContests from "../pages/AllContests.jsx/AllContests";
 import AddContest from "../pages/Dashboard/AddContest/AddContest";
 import CreatedContests from "../pages/Dashboard/CreatedContests/CreatedContests";
 import AdminRoute from "./AdminRoute";
+import ModeratorRoute from "./ModeratorRoute";
 import ContestDetails from "../components/ContestDetails/ContestDetails";
 import Home from "../pages/Home/Home/Home";
 import PrivateRoute from "./PrivateRoute";
@@ -16,6 +17,7 @@ import Payment from "../pages/Payment/Payment";
 import RegisteredContest from "../pages/Dashboard/RegisteredContest/RegisteredContest";
 import WinningContest from "../pages/Dashboard/WinningContest/WinningContest";
 import Profile from "../pages/Dashboard/Profile/Profile";
+import UpdateContest from "../pages/Dashboard/UpdateContest/UpdateContest";
 
 export const router = createBrowserRouter([
   {
@@ -80,11 +82,25 @@ export const router = createBrowserRouter([
       // moderator dashboard
       {
         path: "addContest",
-        element: <AddContest />,
+        element: (
+          <ModeratorRoute>
+            <AddContest />
+          </ModeratorRoute>
+        ),
       },
       {
         path: "createdContests",
-        element: <CreatedContests />,
+        element: (
+          <ModeratorRoute>
+            <CreatedContests />
+          </ModeratorRoute>
+        ),
+      },
+      {
+        path: "updateContest/:id",
+        element: <UpdateContest />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/contest/${params.id}`),
       },
       // users dashboard
       {

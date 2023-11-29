@@ -5,6 +5,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { FaFileLines } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 export default function CreatedContests() {
   const { user } = useContext(AuthContext);
@@ -72,21 +73,27 @@ export default function CreatedContests() {
               </td>
               <td className="mx-auto text-center">{contest.status}</td>
               <td className="mx-auto text-center">
-                <button
-                  disabled={contest.status === "accepted"}
-                  className="bg-primary text-white border p-2 text-lg rounded-xl"
-                >
-                  <MdEdit />
-                </button>
+                {contest?.status === "approved" ? (
+                  ""
+                ) : (
+                  <Link to={`/dashboard/updateContest/${contest?._id}`}>
+                    <button className="bg-primary text-white border p-2 text-lg rounded-xl">
+                      <MdEdit />
+                    </button>
+                  </Link>
+                )}
               </td>
               <td className="mx-auto text-center">
-                <button
-                  onClick={() => handleDelete(contest._id)}
-                  disabled={contest.status === "accepted"}
-                  className="border bg-red-500 text-white p-2 text-lg rounded-xl"
-                >
-                  <MdDelete />
-                </button>
+                {contest?.status === "approved" ? (
+                  ""
+                ) : (
+                  <button
+                    onClick={() => handleDelete(contest._id)}
+                    className="border bg-red-500 text-white p-2 text-lg rounded-xl"
+                  >
+                    <MdDelete />
+                  </button>
+                )}
               </td>
               <td className="mx-auto text-center">
                 <button className="border bg-secondary  p-2 text-lg rounded-xl">
