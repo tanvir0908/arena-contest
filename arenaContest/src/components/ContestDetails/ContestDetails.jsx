@@ -1,21 +1,33 @@
-import { Link, useLocation } from "react-router-dom";
-import useAxiosPublic from "../../hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+// import { useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+
+// import { Elements } from "@stripe/react-stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
+// import CheckoutForm from "../../pages/Payment/CheckoutForm";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
+// import { useQuery } from "@tanstack/react-query";
 
 export default function ContestDetails() {
-  const location = useLocation();
-  const axiosPublic = useAxiosPublic();
+  // const stripePromise = loadStripe(
+  //   "pk_test_51OEtWTJ5bzp9GZmm5xo4yISS97TL4G5p7wVEZVzEmSuKZ0ZUHtzSfC5pHoIVNMyS4PrGw8TgtWXo55AeUufIL8YP00frqB01lh"
+  // );
 
-  const { data: contest = [] } = useQuery({
-    queryKey: ["contest"],
-    queryFn: async () => {
-      const res = await axiosPublic.get(`/contest/${location.state}`);
-      return res.data;
-    },
-  });
-  console.log(contest);
+  // const location = useLocation();
+  // const axiosPublic = useAxiosPublic();
+  // const [showPayment, setShowPayment] = useState(false);
+
+  const contest = useLoaderData();
+
+  // const { data: contest = [] } = useQuery({
+  //   queryKey: ["contest"],
+  //   queryFn: async () => {
+  //     const res = await axiosPublic.get(`/contest/${location.state}`);
+  //     return res.data;
+  //   },
+  // });
+
   return (
-    <div>
+    <div className="mb-20">
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
         Contest Details
       </h2>
@@ -24,30 +36,32 @@ export default function ContestDetails() {
         <div className="flex-1">
           <img
             className="w-full h-[45rem] rounded-xl object-cover"
-            src={contest.contestPhoto}
+            src={contest?.contestPhoto}
             alt=""
           />
         </div>
         <div className="flex-1 space-y-3">
           <h2 className="text-2xl font-bold">
-            Contest Name: {contest.contestName}
+            Contest Name: {contest?.contestName}
           </h2>
           <p className="font-bold text-xl">
-            contest Price: {contest.contestPrice}
+            contest Price: {contest?.contestPrice}
           </p>
           <p className="font-bold text-xl">Prize Money: {contest.priceMoney}</p>
           <p className="font-bold text-xl">
-            Contest Type: {contest.contestType}
+            Contest Type: {contest?.contestType}
           </p>
           <p className="font-bold text-xl">
-            Contest Deadline: {contest.contestDeadline}
+            Contest Deadline: {contest?.contestDeadline}
           </p>
           <p className="font-bold text-xl">
-            Participation Count: {contest.participationCount}
+            Participation Count: {contest?.participationCount}
           </p>
-          <p className="font-bold text-xl">Creator: {contest.creatorEmail}</p>
+          <p className="font-bold text-xl">Creator: {contest?.creatorEmail}</p>
           {contest.contestWinnerEmail ? (
-            <p className="font-bold text-xl">Winner: {contest.contestName}</p>
+            <p className="font-bold text-xl">
+              Winner: {contest?.contestWinnerEmail}
+            </p>
           ) : (
             ""
           )}
@@ -57,9 +71,14 @@ export default function ContestDetails() {
               {contest.contestDescription}
             </span>
           </p>
-          <button className="bg-primary px-5 py-3 text-white font-bold rounded-xl">
-            <Link to={"/payment"}>Register</Link>
-          </button>
+          <Link to={`/payment/${contest._id}`}>
+            <button
+              // onClick={() => setShowPayment(!showPayment)}
+              className="bg-primary mt-5 px-5 py-3 text-white font-bold rounded-xl"
+            >
+              Register
+            </button>
+          </Link>
         </div>
       </div>
     </div>

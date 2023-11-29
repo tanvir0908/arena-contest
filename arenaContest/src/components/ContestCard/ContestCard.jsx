@@ -35,8 +35,11 @@ export default function ContestCard({ contest }) {
         </p>
 
         <button
+          // onClick={() => {
+          //   navigate(`/contestDetails/${_id}`, { state: _id });
+          // }}
           onClick={() => {
-            navigate(`/contestDetails/${_id}`, { state: _id });
+            navigate(`/contestDetails/${_id}`);
           }}
           className="border-2 border-primary text-lg font-semibold px-3 py-1 rounded-xl mt-5 text-primary"
         >

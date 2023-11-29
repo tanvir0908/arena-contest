@@ -40,7 +40,7 @@ export default function Banner() {
   return (
     <div className="">
       <div className="py-64 rounded-xl background object-cover">
-        <h2 className="text-center text-3xl font-bold text-primary mb-5">
+        <h2 className="text-center text-4xl font-bold text-primary mb-10">
           Looking For Contest? Search Now.
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="mx-auto text-center">

@@ -16,9 +16,7 @@ export default function Login() {
   }, []);
 
   const [loginError, setLoginError] = useState(null);
-
   const axiosPublic = useAxiosPublic();
-
   const location = useLocation();
   const navigate = useNavigate();
 

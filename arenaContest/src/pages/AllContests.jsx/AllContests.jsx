@@ -10,7 +10,7 @@ export default function AllContests() {
   const [tabIndex, setTabIndex] = useState(0);
 
   const { data: contests = [] } = useQuery({
-    queryKey: ["contest"],
+    queryKey: ["allContests"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/approvedContests`);
       return res.data;
@@ -31,7 +31,7 @@ export default function AllContests() {
   );
 
   return (
-    <div>
+    <div className="mb-20">
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
         All Contests: {contests?.length}
       </h2>

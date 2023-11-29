@@ -6,7 +6,7 @@ export default function PopularContest() {
   const axiosPublic = useAxiosPublic();
 
   const { data: contests = [], isLoading } = useQuery({
-    queryKey: ["contest"],
+    queryKey: ["popularContests"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/popularContests`);
       return res.data;

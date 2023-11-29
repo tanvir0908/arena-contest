@@ -1,28 +1,28 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
 import { HiMenu } from "react-icons/hi";
 import Button from "../../../components/Button/Button";
 import Container from "../../../components/Container/Container";
 import { AuthContext } from "../../../providers/AuthProvider";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+// import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Logo from "../../../components/Logo/Logo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [profile, setProfile] = useState(false);
-  const [userInformation, setUserInformation] = useState(null);
+  // const [userInformation, setUserInformation] = useState(null);
   const { user, logoutUser } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
 
-  useEffect(() => {
-    axiosPublic(`/users/${user?.email}`).then((res) => {
-      setUserInformation(res.data);
-    });
-  }, [axiosPublic, user]);
+  // useEffect(() => {
+  //   axiosPublic(`/users/${user?.email}`).then((res) => {
+  //     setUserInformation(res.data);
+  //   });
+  // }, [axiosPublic, user]);
 
-  // console.log(userInformation);
-  // console.log(user);
+  // // console.log(userInformation);
+  // // console.log(user);
   const handleLogout = () => {
     setProfile(false);
     logoutUser()
@@ -74,16 +74,16 @@ export default function Navbar() {
                   setIsOpen(false);
                 }}
                 className="w-10 md:w-12 h-10 md:h-12 cursor-pointer border-2 border-primary rounded-full object-cover"
-                src={userInformation?.photo}
-                // src={user?.photoURL}
+                // src={userInformation?.photo}
+                src={user?.photoURL}
                 alt=""
               />
               {profile && (
                 <div className="absolute mt-1 md:mt-3 top-12 right-10 md:right-14 lg:right-0  w-[15rem] shadow-md rounded-xl  z-10 bg-secondary">
                   <div className="flex flex-col">
                     <p className="rounded-t-xl text-center px-6 py-4 font-medium">
-                      {userInformation?.name}
-                      {/* {user?.displayName} */}
+                      {/* {userInformation?.name} */}
+                      {user?.displayName}
                     </p>
                     <Link
                       onClick={() => setProfile(false)}

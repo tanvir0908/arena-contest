@@ -1,4 +1,3 @@
-import Footer from "../../Shared/Footer/Footer";
 import Banner from "../Banner/Banner";
 import BestCreator from "../BestCreator/BestCreator";
 import PopularContest from "../PopularContest/PopularContest";
@@ -11,7 +10,6 @@ export default function Home() {
       <PopularContest />
       <ContestAdvertisement />
       <BestCreator />
-      <Footer />
     </div>
   );
 }
