@@ -34,11 +34,11 @@ export default function DeadlineTimer({ deadline }) {
   return (
     <div>
       <h2>Time Remaining:</h2>
-      <div>
-        <span>{timeRemaining.days}</span> days&nbsp;
-        <span>{timeRemaining.hours}</span> hours&nbsp;
-        <span>{timeRemaining.minutes}</span> minutes&nbsp;
-        <span>{timeRemaining.seconds}</span> seconds
+      <div className="space-x-3">
+        <span>{timeRemaining.days} days</span>
+        <span>{timeRemaining.hours} hours</span>
+        <span>{timeRemaining.minutes} minutes</span>
+        <span>{timeRemaining.seconds} seconds</span>
       </div>
     </div>
   );
