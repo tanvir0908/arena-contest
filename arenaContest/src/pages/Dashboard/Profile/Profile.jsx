@@ -19,15 +19,15 @@ export default function Profile() {
       return res.data;
     },
   });
-
+  console.log(winningStat?.winningStat);
   const data = [
     {
       name: "Winning Contest",
       value: Number(winningStat?.winningStat),
     },
     {
-      name: "Participated Contest",
-      value: 100 - Number(winningStat?.winningStat),
+      name: "Losing Contest",
+      value: 1 - Number(winningStat?.winningStat),
     },
   ];
 
