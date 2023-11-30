@@ -49,13 +49,21 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/contest/${params.id}`),
+          fetch(
+            `https://b8a12-server-side-tanvir0908.vercel.app/contest/${params.id}`
+          ),
       },
       {
         path: "payment/:id",
-        element: <Payment />,
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/contest/${params.id}`),
+          fetch(
+            `https://b8a12-server-side-tanvir0908.vercel.app/contest/${params.id}`
+          ),
       },
     ],
   },
@@ -105,7 +113,9 @@ export const router = createBrowserRouter([
           </ModeratorRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/contest/${params.id}`),
+          fetch(
+            `https://b8a12-server-side-tanvir0908.vercel.app/contest/${params.id}`
+          ),
       },
       {
         path: "submittedContest/:id",
@@ -115,7 +125,9 @@ export const router = createBrowserRouter([
           </ModeratorRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/contest/${params.id}`),
+          fetch(
+            `https://b8a12-server-side-tanvir0908.vercel.app/contest/${params.id}`
+          ),
       },
       // users dashboard
       {
