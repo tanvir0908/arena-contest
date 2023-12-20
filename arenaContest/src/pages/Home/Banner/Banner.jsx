@@ -38,7 +38,7 @@ export default function Banner() {
   };
 
   return (
-    <div className="mx-5 md:mx-0">
+    <div className="mx-5 lg:mx-0">
       <div className="py-52 rounded-xl background object-cover">
         <h2 className="text-center text-3xl lg:text-4xl font-bold lg:text-primary mb-10">
           Looking For Contest? Search Now.
@@ -48,9 +48,9 @@ export default function Banner() {
             {...register("searchText", { required: true })}
             type="text"
             name="searchText"
-            className="border lg:w-[25rem] h-[3rem] px-3 py-2 rounded-l-xl outline-none border-primary"
+            className="border md:w-[25rem] h-[3rem] px-3 py-2 rounded-l-xl outline-none border-primary"
           />
-          <button className="rounded-r-xl lg:w-[10rem] h-[3rem] bg-primary px-3 py-2 font-semibold text-white">
+          <button className="rounded-r-xl md:w-[10rem] h-[3rem] bg-primary px-3 py-2 font-semibold text-white">
             Search
           </button>
         </form>
@@ -64,7 +64,7 @@ export default function Banner() {
         <div className="text-center mt-5">
           <button
             onClick={handleClear}
-            className="lg:w-[15rem] h-[3rem] px-5 lg:px-0 bg-red-500 rounded-xl font-semibold text-white"
+            className="md:w-[15rem] h-[3rem] px-5 lg:px-0 bg-red-500 rounded-xl font-semibold text-white"
           >
             Clear Search Result
           </button>
