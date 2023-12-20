@@ -70,7 +70,7 @@ export default function BestCreator() {
           {moderatorData?.map((partner, index) => (
             <div
               key={partner._id}
-              className="bg-white border-2 h-[35rem] overflow-hidden border-primary cursor-pointer transition duration-1000 rounded-xl"
+              className="bg-white border-2 h-[35rem] lg:h-full overflow-hidden border-primary cursor-pointer transition duration-1000 rounded-xl"
             >
               <div className="rounded-t-xl h-56 bg-secondary flex justify-center items-center">
                 <img
