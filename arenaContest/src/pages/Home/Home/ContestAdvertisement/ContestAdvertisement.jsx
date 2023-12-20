@@ -73,7 +73,7 @@ export default function ContestAdvertisement() {
   };
 
   return (
-    <div className="my-20">
+    <div className="my-20 mx-10 lg:mx-0">
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-5 mt-10">
         Contests and Winners
       </h2>

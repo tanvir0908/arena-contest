@@ -61,7 +61,7 @@ export default function BestCreator() {
     ],
   };
   return (
-    <div className="mb-20">
+    <div className="mb-20 mx-10 lg:mx-0">
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-5 mt-10">
         Best Creators
       </h2>

@@ -57,7 +57,7 @@ export default function Footer() {
           <h2 className="text-2xl font-semibold pb-5 lg:pb-3 text-primary">
             Contact
           </h2>
-          <form onSubmit={handleMessage} className="w-full lg:w-2/3">
+          <form onSubmit={handleMessage} className="w-full lg:w-2/3 text-left">
             <div className="flex flex-col">
               <span className="text-lg font-medium">Name</span>
               <input

@@ -5,10 +5,7 @@ import ContestCard from "../../../components/ContestCard/ContestCard";
 export default function PopularContest() {
   const axiosPublic = useAxiosPublic();
 
-  const {
-    data: contests = [],
-    isLoading,
-  } = useQuery({
+  const { data: contests = [], isLoading } = useQuery({
     queryKey: ["popularContests"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/popularContests`);
@@ -24,7 +21,7 @@ export default function PopularContest() {
     );
   }
   return (
-    <div className="my-20">
+    <div className="my-20 mx-5 lg:mx-0">
       <h2 className="text-3xl lg:text-4xl font-bold text-primary text-center mb-3 mt-10">
         Most Popular Contests
       </h2>
